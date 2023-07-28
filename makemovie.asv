@@ -1,0 +1,16 @@
+im_stack = Hmat;
+zstack = kx_shift_vec/k/NA;
+
+fig = figure;
+% set(fig, 'Position', [0 0 100 100])
+
+for i = 1:length(zstack)
+figure(fig);
+imagesc(abs(im_stack(:,:,i)).^2);
+title([num2str(zstack(i))]);
+% caxis([0 1.2]);
+axis off;
+m(:,:,i) = getframe(gcf);
+pause(0.3);
+end
+saveMovie(m,'coma_vs_illuminationscan.gif',3,'k');
